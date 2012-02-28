@@ -22,6 +22,8 @@ class Squeeze
 	protected $_minify_base;
 
 	private $_minify_url;
+
+	private $_footer_scripts;	// scripts you want in footer (uncompressed)
 	
 	function __construct( $config = array() )
 	{
@@ -57,6 +59,14 @@ class Squeeze
 		$this->_css[] = $css;
 	}
 
+	function footer_scripts( $script ){
+		$this->_footer_scripts .= $script;
+	}
+
+	function yeild_footer(){
+		return $this->_footer_scripts;
+	}
+
 
 	function render( $debug = false )
 	{
@@ -82,3 +92,4 @@ class Squeeze
 	
 	
 }
+
